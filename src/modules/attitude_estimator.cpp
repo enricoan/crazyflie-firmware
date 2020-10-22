@@ -1,6 +1,6 @@
 #include "attitude_estimator.h"
 #include <cmath>
-//Variável de led para indicar calibração do giroscópio    
+//Variável para indicar calibração do giroscópio (eliminiação de erro sistemático de leitura)    
 bool led_cal = LED_RED_L; 
 
 //Construtor do estimador de atitude
@@ -33,8 +33,8 @@ void AttitudeEstimator::init(){
 // Estimador dos ângulos de Euler (rad) e velocidades angulares (rad/s)
 void AttitudeEstimator::estimate(){
     imu.read();
-    /* 
-//    Controle linear de ângulos
+    /*
+//  Controle linear de ângulos
     p = imu.gx - p_bias; 
     float phi_g = phi + p * dt;
     float phi_a = atan2(-imu.ay, -imu.az);
@@ -48,7 +48,7 @@ void AttitudeEstimator::estimate(){
     r = imu.gz - r_bias; 
     psi = psi + r * dt;
     */
-//    Controle não linear de ângulos
+//  Controle não linear de ângulos
     p = imu.gx - p_bias; 
     float phi_g = phi + (p + sin(phi)*tan(theta)*q + cos(phi)*tan(theta)*r) * dt;
     float phi_a = atan2(-imu.ay, -imu.az);
