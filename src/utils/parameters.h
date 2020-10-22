@@ -25,7 +25,7 @@ const float kl = 1.726e-8;
 const float kd = 1.301e-10;
 
 //Constantes lab 7 (para os filtros passa alta e passa baixa)
-const int f_corte = 0;
-const float delta_t = 0.1;
- float alpha = (f_corte*delta_t)/(1 + f_corte*delta_t);
+const float f_corte = 10;
+const float dt = 0.002;
+const float alpha = (f_corte*dt)/(1 + f_corte*dt);
 #endif

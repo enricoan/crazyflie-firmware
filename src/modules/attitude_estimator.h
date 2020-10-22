@@ -6,19 +6,21 @@
 
 //classe do estimador de atitude
 class AttitudeEstimator{
- public:
- //construtor da classe
-    AttitudeEstimator();
- //Iinicialização da classe
-    void init();
- //estimar ângulos de euler
-    void estimate();
- //Ângulos de Euler (rad)
-    float phi, theta, psi;
- //Velocidades angulares (rad/s)
-    float p, q, r;
- private:
- // IMU sensor object
-    BMI088 imu;
+    public:
+        //construtor da classe
+            AttitudeEstimator();
+        //Iinicialização da classe
+            void init();
+        //estimar ângulos de euler
+            void estimate();
+        //Ângulos de Euler (rad)
+            float phi, theta, psi;
+        //Velocidades angulares (rad/s)
+            float p, q, r;
+    private:
+        //IMU sensor object
+            BMI088 imu;
+        //Obtenção dos valores de erro sistemático
+            float p_bias, q_bias, r_bias;
 };
 # endif
