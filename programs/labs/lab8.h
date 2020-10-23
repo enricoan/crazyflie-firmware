@@ -29,15 +29,16 @@ int main (){
     // Initialize interrupts
     tic.attach(& callback, dt);
 
-    // Arm motors and run controller while stable
+    //Armar motores
     mixer.arm();
 
+    //Rodar o controlador enquanto a inclinação de roll e pitch do drone não superarem 45 graus e as velocidade angulares não superarem 12.5 rad/s
     while(abs(att_est.phi) <= pi/4.0 && abs(att_est.theta) <= pi/4.0 && abs(att_est.p) <= 4.0*pi && abs(att_est.q) <= 4.0*pi && abs(att_est.r) <= 4.0*pi){
         if (flag){
             flag = false;
             att_est.estimate();
             att_cont.control(phi_r, theta_r, psi_r, att_est.phi, att_est.theta, att_est.psi, att_est.p, att_est.q, att_est.r);
-            mixer.actuate(0.85*f_t, att_cont.tau_phi, att_cont.tau_theta, att_cont.tau_psi);
+            mixer.actuate(0.8*f_t, att_cont.tau_phi, att_cont.tau_theta, att_cont.tau_psi);
         }
     }
     // Disarm motors and end program
