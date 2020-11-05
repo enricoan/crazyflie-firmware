@@ -19,6 +19,5 @@ class AttitudeController{
     private:
         //Control torque (N.m) given reference angle ( rad ) and current angle ( rad) and angular velocity ( rad /s) with given controller gains
             float control_siso(float angle_r, float angle, float rate, float kp, float kd);
-            float kp, kd, kd_yaw, angle_antigo, angle_r_antigo;
 };
 #endif

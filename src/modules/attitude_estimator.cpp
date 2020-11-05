@@ -19,11 +19,11 @@ AttitudeEstimator::AttitudeEstimator(): imu(IMU_SDA, IMU_SCL){
 //Inicializador da classe
 void AttitudeEstimator::init(){
     imu.init();   
-    for(int i = 0; i<500; i++){
+    for(int i = 0; i<1500; i++){
         imu.read();
-        p_bias = p_bias + imu.gx/500;
-        q_bias = q_bias + imu.gy/500;
-        r_bias = r_bias + imu.gz/500;
+        p_bias = p_bias + imu.gx/1500;
+        q_bias = q_bias + imu.gy/1500;
+        r_bias = r_bias + imu.gz/1500;
 
         led_cal = !led_cal;
         wait(dt);

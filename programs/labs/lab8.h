@@ -18,7 +18,7 @@ void callback(){flag = true;}
 //Programa principal
 int main (){
     //Inidicação de que queremos que o drone fique sempre na posição paralela ao chao (definição dos setpoints do controlador)
-    float f_t = m*g;
+    float f_t = 0.83*m*g;
     float phi_r = 0.0f;
     float theta_r = 0.0f;
     float psi_r = 0.0f;
@@ -38,7 +38,7 @@ int main (){
             flag = false;
             att_est.estimate();
             att_cont.control(phi_r, theta_r, psi_r, att_est.phi, att_est.theta, att_est.psi, att_est.p, att_est.q, att_est.r);
-            mixer.actuate(0.8*f_t, att_cont.tau_phi, att_cont.tau_theta, att_cont.tau_psi);
+            mixer.actuate(f_t, att_cont.tau_phi, att_cont.tau_theta, att_cont.tau_psi);
         }
     }
     // Disarm motors and end program
