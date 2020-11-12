@@ -13,8 +13,8 @@ void VerticalEstimator::init(){
 
 //Predição da posição e velodidade verticais através da planta, que leva em consideração a frça de empuxo total aplicada pelas asas
 void VerticalEstimator::predict(float f_t){
-    z = z + w * dt_range;    
-    w = w + f_t/m;
+    z = z + w * dt;    
+    w = w + (f_t/m)*dt;
 }
 
 // Corretor da posição e da velocidade verticais através das medidas dos ângulos
