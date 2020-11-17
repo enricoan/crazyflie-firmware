@@ -65,4 +65,9 @@ const float w_n_ver = 4.0/(zeta_cont_ver*t_s_ver);
 const float kp_ver = w_n_ver * w_n_ver;
 const float kd_ver = 2.0 * zeta_cont_ver * w_n_ver;
 
+//Constantes lab11: estimador horizontal
+const float gama = 42.0*pi/180.0;
+const float w_est_hor = 420.0;
+const float sigma = (2.0 * tan(gama/2))/(w_est_hor * dt);
+const float l_hor = 50.0;
 #endif

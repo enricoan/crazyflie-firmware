@@ -8,7 +8,7 @@ float control_motor(double omega_r){
     float PWM = a2*pow(omega_r,2) + a1*omega_r;
     return PWM;}
 
-void mixer (float f_t, float tau_phi, float tau_theta, float tau_psi){
+void mixer(float f_t, float tau_phi, float tau_theta, float tau_psi){
     omega_1 = f_t * 1/(4*kl) + tau_phi * -1/(4*kl*l) + tau_theta * -1/(4*kl*l) + tau_psi * -1/(4*k_drag);
     omega_2 = f_t * 1/(4*kl) + tau_phi * -1/(4*kl*l) + tau_theta *  1/(4*kl*l) + tau_psi *  1/(4*k_drag);
     omega_3 = f_t * 1/(4*kl) + tau_phi *  1/(4*kl*l) + tau_theta *  1/(4*kl*l) + tau_psi * -1/(4*k_drag);
@@ -36,7 +36,7 @@ void actuate (float f_t, float tau_phi, float tau_theta, float tau_psi){
 }
 
 int main(){
-    actuate(1.5*m*g, 0, 0, 0);
+    actuate(m*g, 0, 0, 0);
     wait(5);
     actuate(0, 0, 0, 0);
     while(true){}

@@ -1,13 +1,13 @@
 #include "mixer.h"
 
-Mixer::Mixer():motor_1(MOTOR1),motor_2(MOTOR2),motor_3(MOTOR3),motor_4(MOTOR4){}
+Mixer::Mixer():motor_1(MOTOR1),motor_2(MOTOR2),motor_3(MOTOR3),motor_4(MOTOR4), led_funcionamento(LED_GREEN_L){}
 
-void Mixer::arm(){armed = true;}
+void Mixer::arm(){armed = true; led_funcionamento = 0;}
 
-void Mixer::disarm()
-{
+void Mixer::disarm(){
     actuate(0, 0, 0, 0);
-    armed = false; 
+    armed = false;
+    led_funcionamento = 1; 
 }
 
 void Mixer::actuate(float f_t, float tau_phi, float tau_theta, float tau_psi){

@@ -26,6 +26,9 @@ class AttitudeEstimator{
         //IMU sensor object
             BMI088 imu;
 
+        //Variavel para o LED indicador de calibração
+            DigitalOut led;
+            
         //Obtenção dos valores de erro sistemático
             float p_bias, q_bias, r_bias;
 };
