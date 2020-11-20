@@ -56,8 +56,8 @@ const float alpha_ver_1 = l_ver_1 * dt_range;
 const float alpha_ver_2 = l_ver_2 * dt_range;
 
 //Constantes lab10: controlador vertical
-const float os_ver = 0.3/100;
-const float t_s_ver = 1.5;
+const float os_ver = 0.5/100;
+const float t_s_ver = 2.0;
 
 const float zeta_cont_ver = abs(log(os_ver)) / (pow(log(os_ver)*log(os_ver) + pi*pi, 0.5));
 const float w_n_ver = 4.0/(zeta_cont_ver*t_s_ver);
@@ -70,4 +70,14 @@ const float gama = 42.0*pi/180.0;
 const float w_est_hor = 420.0;
 const float sigma = (2.0 * tan(gama/2))/(w_est_hor * dt);
 const float l_hor = 50.0;
+
+//Constantes lab12: controlador horizontal
+const float os_hor = 0.5/100;
+const float t_s_hor = 2.0;
+
+const float zeta_cont_hor = abs(log(os_hor)) / (pow(log(os_hor)*log(os_hor) + pi*pi, 0.5));
+const float w_n_hor = 4.0/(zeta_cont_hor * t_s_hor);
+
+const float kp_hor = w_n_hor * w_n_hor;
+const float kd_hor = 2.0 * zeta_cont_hor * w_n_hor;
 #endif
